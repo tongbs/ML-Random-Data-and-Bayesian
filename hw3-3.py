@@ -33,7 +33,6 @@ def plotline(x, w, cov, Ground):
     down_y = []  # red line  
     for _x in x:
         pow_x = []
-        print("545445454525",n)
         for j in range(n):
             pow_x.append(math.pow(_x,j))
         print(pow_x)
@@ -44,7 +43,7 @@ def plotline(x, w, cov, Ground):
             down_y.append(pred_y-cov)
         else:
             X_array = np.array(pow_x).reshape((1,n))
-            var_y = (1/a) + np.dot(np.dot(X_array,cov), tran_X_array)
+            var_y = (1/a) + np.dot(np.dot(X_array,cov), X_array.transpose())
             var_y = var_y[0][0]
             up_y.append(pred_y+var_y)
             down_y.append(pred_y-var_y)
